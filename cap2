@@ -1,0 +1,7 @@
+class Employee:
+    def init(self, name, income, position, organization):
+        # this codes initializes the details of employees
+        self._name = name  
+        self._income = income 
+        self._position = position  
+        self._organization = organization 
