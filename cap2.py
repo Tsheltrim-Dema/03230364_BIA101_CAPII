@@ -1,6 +1,6 @@
 class Employee:
     def __init__(self, name, income, position, organization, dividend_income, num_children, rental_income, self_education):
-        # This code initializes the details of employees
+        # this suit of code initlized 
         self._name = name  
         self._income = income 
         self._position = position  
@@ -12,41 +12,40 @@ class Employee:
 
 class TaxCalculator:
     def __init__(self, employee):
-        # This code helps to initialize the tax calculator as per the employee details
+        # this code help to initialize the tax calculation as per employee information
         self._employee = employee  
-        self._taxable_income = self._calculate_taxable_income()  # taxable income is obtained by this code
-        self._tax_amount = self._calculate_tax_amount()  # amount of tax is calculated by this code
+        self._taxable_income = self._calculate_taxable_income()  # it about taxable income
+        self._tax_amount = self._calculate_tax_amount()  # calculation of tax
 
     def _calculate_taxable_income(self):
-        # This code calculates taxable income based on employee's income and position
+        # it shows taxable income based on there postion
         taxable_income = self._employee._income
 
-        # Deductibles based on position
+        # deduction based on position
         if self._employee._position == "Regular":
-            taxable_income -= 0.10 * self._employee._income  # 10% of PF (Provident Fund) is deducted by this code
-            taxable_income -= 0.05 * self._employee._income  # 5% Group Insurance Scheme will be deducted from the employee's income
-
-        # Deductibles for children
+            taxable_income -= 0.10 * self._employee._income  #deduction of 10%  provident fund
+            taxable_income -= 0.05 * self._employee._income  # deduction of 5% group insurence scheme
+        # Deduction for children
         child_deduction = min(350000 * self._employee._num_children, taxable_income)
         taxable_income -= child_deduction
 
-        # Deductibles for rental income
+        # Deduction for rental income
         rental_deduction = 0.20 * self._employee._rental_income
         taxable_income -= rental_deduction
 
-        # Deductibles for self-education
+        # Deduction for self-education
         if self._employee._self_education:
             education_deduction = min(350000, taxable_income)
             taxable_income -= education_deduction
 
         # General deduction of income as per the Income Tax Act of Bhutan
-        general_deductions = min(0.05 * taxable_income, 350000)  # By rules of tax act of Bhutan 5% or 350,000 of income, whichever is lower will be deducted
+        general_deductions = min(0.05 * taxable_income, 350000)  # As per income tax of bhutan 5% or 350,000 of income, whichever is lower is deductable
         taxable_income -= general_deductions
 
         return taxable_income
 
     def _calculate_tax_amount(self):
-        # This code defines general tax rates of income per year of individuals 
+        # this defines general tax rates of income per yaar of individuals
         tax_rates = [
             (300000, 0.0),
             (400000, 0.10),
@@ -113,6 +112,6 @@ except Exception as e:
     # Handle any other exceptions
     print("An error occurred:", str(e))
 
-    
+
 
 
